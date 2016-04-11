@@ -6,7 +6,9 @@ gem 'rails', '3.2.19'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
+  group :development, :test do
   gem 'sqlite3'
+end
   # gem 'charged', git: 'git@github.com:ion8/charged.git', branch: 'master'
 end
 
@@ -57,3 +59,4 @@ gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 gem "dotenv-rails"
 gem "unicorn-rails"
 gem "mysql2", :group => [:production]
+gem "refinerycms", "~> 2.1.0"
