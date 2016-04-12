@@ -1,0 +1,59 @@
+upstream <%= app %>_app {
+  # fail_timeout=0 means we always retry an upstream even if it failed
+  # to return a good HTTP response (in case the Unicorn master nukes a
+  # single worker for timing out).
+  #
+  server unix:<%= socket_path %>/unicorn.sock fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name www.<%= domain %> <%= resolved_ip %>;
+  return 301 http://<%= domain %>$request_uri;
+}
+
+server {
+  listen 80;
+
+  client_max_body_size 2G;
+  server_name <%= domain %>;
+
+  keepalive_timeout 5;
+
+  root <%= deploy_to %>/current/public;
+
+  try_files $uri/index.html $uri.html $uri @app;
+
+  location @app {
+    # an HTTP header important enough to have its own Wikipedia entry:
+    # http://en.wikipedia.org/wiki/X-Forwarded-For
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    # if this were HTTPS we would want:
+    # proxy_set_header X-Forwarded-Proto $scheme;
+
+    proxy_set_header Host $http_host;
+
+    # let the app handle redirects
+    proxy_redirect off;
+
+    proxy_pass http://<%= app %>_app;
+  }
+
+  # set far future expires for assets
+  location ~ ^/assets/ {
+    try_files $uri @app;
+    expires max;
+    add_header Cache-Control public;
+    add_header ETag "";
+    gzip_static on;
+    break;
+  }
+
+  # rails error pages
+  error_page 500 502 503 504 /500.html;
+  location = /500.html {
+    root <%= deploy_to %>/current/public;
+  }
+
+}

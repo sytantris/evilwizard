@@ -38,4 +38,11 @@ EvilWizard::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Add Rack::LiveReload to the bottom of the middleware stack with the default options:
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
+  # or, if you're using better_errors:
+  config.middleware.insert_before Rack::Lock, Rack::LiveReload
+
 end

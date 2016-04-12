@@ -14,6 +14,8 @@ end
 
 group :development do
   gem 'charged', git: 'git@bitbucket.org:ion8/charged.git', branch: 'master'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem "rack-livereload"
 end
 
 
@@ -59,4 +61,3 @@ gem 'refinerycms-acts-as-indexed', '~> 1.0.0'
 gem "dotenv-rails"
 gem "unicorn-rails"
 gem "mysql2", :group => [:production]
-gem "refinerycms", "~> 2.1.0"

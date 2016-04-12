@@ -1,0 +1,14 @@
+<% unless cron_email.empty? -%>
+MAILTO=<%= cron_email %>
+<% end -%>
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# format:
+# min hour day-of-month month-of-year day-of-week(0=sun to 6) cmd
+
+# redirect stdout to /dev/null if you only want emails of errors
+ 
+# every hour on Sunday, ...
+# 0 * * * 0 /bin/bash -c 'echo hello' > /dev/null
+
