@@ -1,0 +1,43 @@
+@import 'sassy/include';
+
+#purchase {
+  h2 {
+    margin-left: 50px;
+    margin-bottom: 30px;
+    text-align: left;
+
+    @include respond-to-max(600px) {
+      text-align: center;
+    }
+  }
+
+  #purchase-text {
+    overflow: auto;
+    max-height: 400px;
+
+    #newsletter {
+      div {
+        text-align: right;
+        margin-top: 20px;
+        padding: 10px 20px;
+
+        #purchase-email {
+          margin-left: 20px;
+          margin-right: 10px;
+          padding: 5px;
+          border-radius: 5px;
+
+          @include respond-to-max(480px) {
+            margin-right: 0;
+            margin-bottom: 20px;
+          }
+        }
+
+        #purchase-submit {
+          padding: 5px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}

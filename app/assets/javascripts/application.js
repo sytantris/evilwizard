@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require app
+//= require carousel
 //= require_tree .

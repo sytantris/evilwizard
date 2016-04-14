@@ -1,0 +1,23 @@
+@import 'sassy/include';
+
+#canned {
+
+  h2 {
+    margin-bottom: 30px;
+
+    @include respond-to-max(600px) {
+      text-align: center;
+    }
+  }
+
+  div.drinks {
+    figure {
+      max-width: 160px;
+      padding: 10px;
+      
+      figcaption {
+        font-weight: bold;
+      }
+    }
+  }
+}

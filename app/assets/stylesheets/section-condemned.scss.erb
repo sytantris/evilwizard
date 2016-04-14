@@ -1,0 +1,137 @@
+@import 'sassy/include';
+
+#condemned {
+  h2 {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #carousel-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    #carousel {
+      flex: 1 60%;
+      order: 2;
+      min-width: 320px;
+      text-align: center;
+      margin-bottom: 50px;
+
+      @include respond-to-max(1024px) {
+        flex: none;
+      }
+
+      @include respond-to-max(480px) {
+        width: 320px;
+      }
+
+      img {
+        vertical-align: middle;
+        margin: 0 5px;
+
+        &.arrow {
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          @include transition(all ease-in-out 0.2s);
+          border-radius: 8px;
+
+          &:hover {
+            background-color: $ColourSectionLinkHover;
+          }
+
+          @include respond-to-max(480px) {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        &#carousel-image {
+          border: 1px solid black;
+          box-shadow: 2px 2px 5px black;
+          border-radius: $Border-Radius;
+          @include transition(all ease-in-out 0.2s);
+
+          &:hover {
+            box-shadow: 0 0 5px white;
+            background-color: $ColourSectionLinkHover;
+            cursor: pointer;
+          }
+
+          @include respond-to-max(480px) {
+            width: 220px;
+          }
+        }
+      }
+    }
+
+    #condemned-text {
+      flex: 1 40%;
+      order: 1;
+      margin-top: 0;
+      margin-bottom: 50px;
+      max-height: 476px;
+      overflow: scroll;
+      
+      @include respond-to-max(1024px) {
+        flex: none;
+        width: 90%;
+      }
+    }
+  }
+
+  #carousel-dropdown {
+    display: none;
+    text-align: center;
+
+    @include respond-to-max(480px) {
+      display: block;
+    }
+
+    select {
+      background-color: black;
+      color: $ColourLightGrey;
+      font-family: $FontBody;
+      height: 50px;
+    }
+  }
+
+  #carousel-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    @include respond-to-max(480px) {
+      display: none;
+    }
+
+    figure {
+      display: inline-block;
+      text-align: center;
+      margin: 0 20px 20px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-radius: $Border-Radius;
+      padding: 5px;
+      @include transition(all ease-in-out 0.2s);
+
+      &:hover {
+        box-shadow: 0 0 5px white;
+        background-color: $ColourSectionLinkHover;
+      }
+
+      img {
+        border-radius: $Border-Radius;
+      }
+
+      figcaption {
+        font-weight: bold;
+        max-width: 150px;
+        color: $ColourSectionLink;
+      }
+    }
+  }
+
+}

@@ -1,4 +1,24 @@
-<h1 id='logo'>
-  <%= link_to Refinery::Core.site_name, refinery.root_path %>
-</h1>
 <%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
+<header class='row' id='main-header'>
+  <div class='sidebar'>
+    <%= image_tag 'logo-skull.png', id: 'mask', alt: 'The Wizard\'s Mask' %>
+  </div>
+  <div class='container'>
+    <hgroup>
+      <h1><a href='#home'>Evil Wizard Elixirs</a></h1>
+      <h2>Potions and Poisons for the Discerning Dilettante</h2>
+    </hgroup>
+    <nav>
+      <ul class='drinks'>
+        <li><a class='navlink' href='#canned'>canned<span> cocktails</span></a></li>
+        <li><a class='navlink' href='#corked'>corked<span>  spirits</span></a></li>
+        <li><a class='navlink' href='#condemned'>condemned<span> drinks</span></a></li>
+      </ul><ul class='links'>
+        <li><a class='navlink' href='#purchase'>purchase</a></li>
+        <li><a class='navlink' href='#about'>about</a></li>
+        <li><a class='navlink' href='#contact'>contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+

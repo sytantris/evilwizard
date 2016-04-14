@@ -1,0 +1,14 @@
+/* sassy scss library
+ * _include.scss
+ * imports all the library files
+ * import using at too of file: 'import include';
+ * by Sy Dyat <sytantris.dyat@gmail.com>
+ * init: 2014-02-18
+ * update: 2016-03-16
+ */
+
+@import 'variables';
+@import 'mixins';
+@import 'media';
+@import 'custom';
+//@import 'mixins-test';

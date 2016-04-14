@@ -1,0 +1,25 @@
+/* sassy scss library
+ * base.scss
+ * a very basic CSS reset
+ * by Sy Dyat <sytantris.dyat@gmail.com>
+ * init: 2014-02-18
+ * update: 2016-03-16
+ */
+
+@import 'include';
+
+html, body { height: 100%; }
+
+* {
+  margin: 0;
+  padding: 0;
+  @include border-box;
+}
+
+body {
+  font-size: 10px $FontBody;
+}
+
+input, textarea {
+  font-family: inherit;
+}

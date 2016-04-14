@@ -1,0 +1,94 @@
+/* sassy scss library
+ * _mixins.scss
+ * a library of various time-saving mixins for SCSS files
+ * import using at top of file: 'import mixins';
+ * by Sy Dyat <sytantris.dyat@gmail.com 
+ * init: 2014-02-18
+ * update: 2016-03-16
+ */
+
+
+
+/*----------------------------------------------------------------- Utilities */
+
+/* Border-box */
+@mixin border-box {
+  -webkit-box-sizing: border-box; // iOS Safari 3-4, Android 2-3
+  -moz-box-sizing: border-box;    // Firefox current
+  box-sizing: border-box;
+}
+
+
+/* All browser settings for background-size property */
+@mixin background-size ($value) {
+  -webkit-background-size: $value; // Android 2.x
+  background-size: $value;
+}
+
+
+/* Change appearance of an element. */
+@mixin appearance ($appearance) {
+  -webkit-appearance: $appearance;
+  -moz-appearance: $appearance;
+  appearance: $appearance;
+}
+
+
+/* Change input/textarea placeholder text colour and any other properties */
+@mixin placeholder ($colour) {
+  &:-moz-placeholder {
+    color: $colour !important;
+    @content;
+  }
+  &::-moz-placeholder {
+    color: $colour !important;
+    @content;
+  }
+  &::-ms-input-placeholder {
+    color: $colour !important;
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    color: $colour;
+    @content;
+  }
+}
+
+
+/*------------------------------------------------------------------- Effects */
+
+/* Transition */
+@mixin transition ($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+
+
+/* Transform */
+@mixin transform ($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
+
+
+/* Opacity */
+@mixin opacity ($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=$opacity);  // < IE8
+}
+
+
+/*-------------------------------------------------------------------- Social */
+
+/* Social icons (uses Rails image-url helper) */
+@mixin social ($type) {
+  background-image: image-url($type + '.png');
+  &:hover {
+    background-image: image-url($type + '.png');
+  }
+}

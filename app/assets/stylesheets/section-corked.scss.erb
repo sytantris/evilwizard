@@ -1,0 +1,27 @@
+@import 'sassy/include';
+
+#corked {
+  h2 {
+    margin-bottom: 30px;
+    text-align: right;
+
+    @include respond-to-max(600px) {
+      text-align: center;
+    }
+  }
+
+  div.drinks {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    figure {
+      max-width: 160px;
+      padding: 10px;
+
+      figcaption {
+        font-weight: bold;
+      }
+    }
+  }
+}

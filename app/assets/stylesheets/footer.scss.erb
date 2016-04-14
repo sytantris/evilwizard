@@ -1,0 +1,22 @@
+@import 'sassy/include';
+
+footer {
+  flex: 1 auto;
+  background: url('<%= image_path 'fake_brick.png' %>');
+  text-align: right;
+  padding: 10px;
+  color: $ColourTwoLightest;
+
+  p {
+    display: inline-block;
+
+    @include respond-to-max(480px) {
+      display: block;
+      margin: 0;
+    }
+
+    span {
+      color: $ColourTwoLight;
+    }
+  }
+}

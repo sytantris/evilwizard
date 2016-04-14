@@ -10,6 +10,18 @@
  *
  *= require refinery/formatting
  *= require refinery/theme
+ *= require lib/reset
+ *= require lib/normalize
+ *= require sassy/base
+ *= require style
+ *= require header
+ *= require footer
+ *= require section-home
+ *= require section-canned
+ *= require section-corked
+ *= require section-condemned
+ *= require section-purchase
+ *= require section-about
+ *= require section-contact
  *= require_self
- *= require_tree .
  */

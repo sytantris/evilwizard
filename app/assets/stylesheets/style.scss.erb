@@ -1,0 +1,340 @@
+@import 'sassy/include';
+@import 'fonts/fonts';
+
+/* global styles */
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+
+  div.sidebar {
+    background-color: grey;
+    background: url('<%= image_path 'fake_brick.png' %>');
+    flex: 1 1 15%;
+    max-width: 150px;
+    min-width: 70px;
+
+    @include respond-to-max(480px) {
+      display: none;
+    }
+
+  }
+
+  div.container {
+    flex: 3 1 85%;
+  }
+}
+
+* { @include border-box; }
+
+body {
+  font: 18px $FontBody;
+  background-color: black;
+  background: url('<%= image_path 'fake_brick.png' %>');
+  text-shadow: 2px 2px 3px black;
+  @include transition(all 0.4s ease);
+  margin-top: $HeaderHeight;
+
+  &.sticky {
+    margin-top: $HeaderHeightPinned !important;
+
+    @include respond-to-max(480px) {
+      margin-top: $HeaderHeightPinned !important;
+    }
+  }
+}
+
+/*
+#main {
+  margin-top: $HeaderHeight;
+
+  @include respond-to-max(480px) {
+    margin-top: $HeaderHeightLowRes !important;
+  }
+}
+*/
+
+a {
+  text-decoration: none;
+  color: $ColourLink;
+  @include transition(all ease-in-out 0.3s);
+
+  &:hover {
+    color: $ColourLinkHover;
+  }
+}
+
+p {
+  line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include header-font;
+  color: $ColourHeaderText;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+section {
+  flex: 1 auto;
+  min-height: 400px;
+  overflow: auto;
+  padding: 50px;
+  color: $ColourBodyText;
+
+  &.flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+
+  &:nth-of-type(odd) {
+    background: url('<%= image_path 'stock_brick_01.jpg' %>');
+
+    .description {
+      background: url('<%= image_path 'fake_brick.png' %>');
+    }
+  }
+
+  &:nth-of-type(even) {
+    background: url('<%= image_path 'stock_brick_02.jpg' %>');
+
+    .description {
+      background: url('<%= image_path 'dark_brick.png' %>');
+    }
+  }
+
+  @include respond-to-max(480px) {
+    padding: 40px 10px;
+  }
+}
+
+div.drinks {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: center;
+
+  figure {
+    flex: 1 25%;
+    width: 260px;
+    text-align: center;
+
+    @include respond-to-max(1024px) {
+      flex: 1 50%;
+
+      figcaption {
+        margin-bottom: 30px;
+      }
+    }
+
+    @include respond-to-max(600px) {
+      flex: 1 100%;
+
+      figcaption {
+        margin-bottom: 30px;
+      }
+    }
+
+    @include respond-to-max(480px) {
+      figcaption {
+        margin-bottom: 0;
+      }
+    }
+
+    img {
+      width: 90%;
+      height: auto;
+      margin-bottom: 15px;
+      max-width: 200px;
+      border-radius: 0 10% 0 10%;
+    }
+  }
+}
+
+div.description {
+  text-align: left;
+  border: 1px solid white;
+  border-radius: 0 10px 0 10px;
+  max-width: 700px;
+  margin: 30px auto 0;
+  padding: 10px;
+  color: $ColourSectionText;
+
+  @include respond-to-max(480px) {
+    padding: 15px;
+  }
+
+  p {
+    margin: 20px;
+
+    @include respond-to-max(480px) {
+      margin: 0;
+      margin-bottom: 15px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+figure {
+  display: inline-block;
+  text-align: center;
+  margin: 0 20px 20px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: $Border-Radius;
+  padding: 5px;
+  @include transition(all ease-in-out 0.2s);
+
+  &:hover {
+    box-shadow: 0 0 5px white;
+    background-color: $ColourSectionLinkHover;
+  }
+
+  img {
+    border-radius: $Border-Radius;
+  }
+
+  figcaption {
+    max-width: 150px;
+    color: $ColourSectionLink;
+    margin: 0 auto;
+  }
+}
+
+div#overlay {
+  background: url('<%= image_path 'fake_brick.png' %>');
+  @include opacity(0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+}
+
+div.modal {
+  position: fixed;
+  top: 30px;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  background: url('<%= image_path 'dark_brick.png' %>');
+  z-index: 2000;
+  border: 1px solid $ColourLightGrey;
+  border-radius: 1px 10px 1px 20px;
+  box-shadow: 3px 3px 10px black;
+  display: none;
+  padding: 20px;
+  min-width: 320px;
+  overflow: auto;
+  text-align: center;
+
+  @include respond-to-max(480px) {
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .back {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid white;
+    @include transition(all ease-in-out 0.2s);
+    
+    &:hover {
+      cursor: pointer;
+      background-color: $ColourNavLinkHover;
+    }
+  }
+
+  div.modal-container {
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: left;
+    height: 100%;
+
+    div.modal-image-container {
+      margin-left: 2%;
+      display: table-cell;
+      width: 28%;
+      display: inline-block;
+      border: none;
+      text-align: left;
+
+      @include respond-to-max(770px) {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      img.modal-image {
+        width: 100%;
+        min-width: 200px;
+        max-width: 300px;
+        border-radius: $Border-Radius;
+        @include transition(all ease-in-out 0.2s);
+
+        &:hover {
+          box-shadow: 0 0 5px white;
+          cursor: zoom-in;
+        }
+
+        @include respond-to-max(770px) {
+          max-width: 100%;
+        }
+      }
+    }
+
+    div.modal-text {
+      display: table-cell;
+      background: url('<%= image_path 'fake_brick.png' %>');
+      display: inline-block;
+      margin: 0;
+      margin-left: 3%;
+      width: 65%;
+      margin-right: 2%;
+      height: 100%;
+      overflow: auto;
+      vertical-align: top;
+      border: 1px solid white;
+      border-radius: 0 29px 0 20px;
+      text-align: left;
+      color: $ColourTwoLightest;
+
+      h3 {
+        padding: 10px;
+        padding-bottom: 0;
+      }
+
+      @include respond-to-max(770px) {
+        display: block;
+        width: 100%;
+        margin: 50px auto 0;
+      }
+
+      @include respond-to-max(480px) {
+        max-height: 400px;
+        padding: 10px;
+      }
+    }
+  }
+}

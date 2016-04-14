@@ -1,0 +1,85 @@
+/* sassy scss library
+ * _variables.scss
+ * a template for variables to be used in SCSS files
+ * import using at top of file: 'import variables';
+ * by Sy Dyat <sytantris.dyat@gmail.com>
+ * init: 2014-02-18
+ * update: 2016-03-16
+ */
+
+
+
+/***** FONTS *****/
+$FontBody: 'Josefin Slab', sans-serif;
+$FontHeader: 'maelregular', fantasy;
+$FontNav: 'basrascript', fantasy;
+$FontAlt: 'audimatregular', sans-serif;
+
+
+
+/***** COLOURS *****/
+
+$ColourDarkRed: #761b00;
+$ColourRed: #a70610;
+$ColourReddishOrange: #ff5700;
+$ColourOrange: #ff7600;
+$ColourYellowishOrange: #ff9f00;
+
+$ColourLightestGrey: #efefef;
+$ColourLightGrey: #aaaaaa;
+
+$ColourLightTeal: #00ffc0;
+$ColourBlue: #5f6589;
+
+/* ColourScheme */
+$ColourOne: $ColourRed;
+$ColourTwo: $ColourBlue;
+$ColourThree: white;
+
+$ColourOneDark: darken($ColourOne, 10%);
+$ColourTwoDark: darken($ColourTwo, 10%);
+$ColourThreeDark: darken($ColourThree, 10%);
+
+$ColourOneLight: lighten($ColourOne, 10%);
+$ColourTwoLight: lighten($ColourTwo, 20%);
+$ColourThreeLight: lighten($ColourThree, 10%);
+
+$ColourTwoLightest: lighten($ColourTwo, 30%);
+
+/* Global */
+$ColourBodyBG: black;
+$ColourBodyText: $ColourLightestGrey;
+$ColourLink: $ColourOneLight;
+$ColourLinkHover: $ColourReddishOrange;
+
+
+/* Header */
+$ColourHeaderBG: black;
+$ColourHeaderText: $ColourTwoLightest;
+$ColourHeaderTextAlt: $ColourLightGrey;
+$ColourNavLink: $ColourOne;
+$ColourNavLinkHover: $ColourOneDark;
+
+
+/* Sections */
+$ColourSectionBG: auto;
+$ColourSectionHeaderText: auto;
+$ColourSectionText: $ColourTwoLight;
+$ColourSectionTextAlt: $ColourTwoLightest;
+$ColourSectionLink: $ColourTwoLight;
+$ColourSectionLinkHover: $ColourTwoDark;
+
+/* Borders & Shadow */
+$ColourBorder: auto;
+$ColourTextShadow: $ColourDarkRed;
+$ColourBoxShadow: auto;
+
+
+/* Dimensions */
+$HeaderHeight: 240px;
+$HeaderHeightPinned: 110px;
+$HeaderHeightLowRes: 290px;
+
+
+/* Borders */
+$Border-Radius: 0 10% 0 10%;

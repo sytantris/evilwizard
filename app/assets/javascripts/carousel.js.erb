@@ -1,0 +1,63 @@
+/* Carousel */
+
+$(document).ready(function () {
+  var carousel_images = [ 'cthulu_juice_300.jpg', 
+                          'slavic_albino_300.jpg',
+                          'beetlejuice_bathtub_gin_300.jpg',
+                          'hubert_cumberdale_300.jpg',
+                          'evil_santa_300.jpg',
+                          'unicorn_tears_300.jpg',
+                          'creme_de_caca_300.jpg',
+                          'jesus_comes_300.jpg',
+                          'evil_red_300.jpg',
+                          'tears_of_the_dragon_300.jpg',
+                          'ubermensch_300.jpg' ];
+  var image_med_path = '/assets/drinks/resized-300x476/';
+  var image_state = 0;
+
+  function carousel_fade () {
+    $('#carousel-image').fadeOut(300, function () {
+      $('#carousel-image').prop('src', image_med_path + carousel_images[image_state]);
+    });
+    $('#carousel-image').fadeIn(300);
+  }
+
+  $('#arrow-left').click(function () {
+    if (image_state <= 0) {
+      image_state = 10;
+    } else {
+      image_state--;
+    }
+    carousel_fade();
+  });
+
+  $('#arrow-right').click(function () {
+    if (image_state >= 10) {
+      image_state = 0;
+    } else {
+      image_state++;
+    }
+    carousel_fade();
+  });
+
+  $('#carousel-image').click(function () {
+    var image_full_path = '/assets/drinks/resized-630x1000/';
+    var image_path = image_full_path + carousel_images[image_state].replace('300', '630');
+    $('#condemned-modal-image').prop('src', image_path);
+    $('#condemned-modal-link').prop('href', image_path);
+    $('#overlay').slideDown(100, function () {
+      $('#condemned-modal').fadeIn(300);
+    });
+  });
+
+  $('.drink').click(function () {
+    image_state = $(this).prop('id').replace('drink-image-', '');
+    carousel_fade();
+  });
+
+  $('#carousel-dropdown select').change(function () {
+    image_state = $(this).val().replace('drink-image-', '');
+    console.log(image_state);
+    carousel_fade();
+  });
+});

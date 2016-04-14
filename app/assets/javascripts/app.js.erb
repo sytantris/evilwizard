@@ -1,0 +1,66 @@
+$(document).ready(function(){
+
+  /* Scrolling */
+
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 1) {
+      $('header').addClass('sticky');
+      $('body').addClass('sticky');
+    } else {
+      $('header').removeClass('sticky');
+      $('body').removeClass('sticky');
+    }
+  });
+
+  $('#mask').click(function () {
+    window.scrollTo(0, 0);
+  });
+
+  $('.navlink').click(function (event) {
+    event.preventDefault();
+    var target = $(this).attr('href');
+    $('html, body').animate({ scrollTop: $(target).offset().top - 110 }, 400);
+  });
+
+
+  /* Modals */
+
+  $('#canned .drinks figure, #corked .drinks figure').click(function () {
+    var drink_images = [ 'absinthe.jpg',
+                         'corpse_reviver.jpg',
+                         'greedy_pirate.jpg',
+                         'mad_cow.jpg',
+                         'voodoo.jpg' ];
+    var current_image_state = $(this).find('img').attr('id').replace('canned-corked-', '');
+    var image_full_path = '/assets/drinks/canned-corked/';
+    var image_path = image_full_path + drink_images[current_image_state];
+    $('#current-modal-image').prop('src', image_path);
+    $('#current-modal-link').prop('href', image_path);
+    $('#overlay').slideDown(100, function () {
+      $('#current-modal').fadeIn(300);
+    });
+  });
+
+  $('.modal .back').click(function () {
+    $(this).parents('.modal').fadeOut(300, function () {
+      $('#overlay').slideUp(100);
+    });
+  });
+
+  $(document).mousedown(function (event) {
+    var clicked = $(event.target);
+    if (clicked.is('.modal') || clicked.parents().is('.modal')) {
+      return;
+    } else {
+      $('.modal').fadeOut(300, function () {
+        $('#overlay').slideUp(100);
+      });
+    }
+  });
+
+  /* Testing */
+
+  $(window).on('resize', function () {
+    console.log($(window).width());
+  });
+});
